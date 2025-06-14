@@ -3,6 +3,8 @@ package com.klitzke.pdv.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "tb_produtos")
 @Getter
@@ -18,7 +20,7 @@ public class Produtos {
     @ToString.Include
     private Long id;
     private String name;
-    private Double preco;
+    private BigDecimal preco;
     private int quantidadeEstoque;
 
 }
