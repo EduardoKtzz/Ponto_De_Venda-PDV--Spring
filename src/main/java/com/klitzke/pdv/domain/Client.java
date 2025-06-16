@@ -21,10 +21,19 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
     private Long id;
+
+    @Column(unique = true)  //Definir coluna como unica, não pode ter repetição
     private String document;
     private String name;
     private String email;
     private String numero;
+    private String estado;
+    private String cidade;
+    private String bairro;
+    private String rua;
+    private String complemento;
+    private int numeroCasa;
+    private int CEP;
 
     //Associações e anotação para definir o tipo de ENUM
     @Enumerated(EnumType.STRING)  //EnumType.‘STRING’ é mais seguro, pois evita problemas quando a ordem do enum mudar.
