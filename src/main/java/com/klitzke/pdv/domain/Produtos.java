@@ -2,9 +2,9 @@ package com.klitzke.pdv.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
 
+//Usando o Lombok para não repetir códigos, e definindo que essa classe vai fazer parte da tabela de produtos, e definindo o nome da tabela
 @Entity
 @Table(name = "tb_produtos")
 @Getter
@@ -15,6 +15,8 @@ import java.math.BigDecimal;
 public class Produtos {
 
     //Atributos
+    //Definindo o tipo de 'ID' e como ele seja gerado
+    //A terceira anotação define que vamos comparar o hackCode somente com o 'ID'
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
