@@ -26,7 +26,7 @@ public class Client {
     private String document;
     private String name;
     private String email;
-    private String numero;
+    private String telefone;
     private String estado;
     private String cidade;
     private String bairro;
