@@ -5,6 +5,6 @@ public enum Segmento {
 
     CLIENTE_FINAL,
     PROFISSIONAL,
-    COLABORADOR;
+    COLABORADOR
 
 }
