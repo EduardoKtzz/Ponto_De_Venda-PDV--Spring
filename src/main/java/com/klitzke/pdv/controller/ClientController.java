@@ -4,10 +4,10 @@ import com.klitzke.pdv.domain.Client;
 import com.klitzke.pdv.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 
 //Aqui temos o http principal para os clientes, com os seus métodos (GET, POST, DELETE, PUT)
@@ -39,6 +39,12 @@ public class ClientController {
     }
 
     //POST PARA CRIAR CLIENTES
+    @PostMapping
+    public ResponseEntity<Client> insert(@RequestBody Client client) {
+        client = service.Insert(client);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(client.getId()).toUri();
+        return ResponseEntity.created(uri).body(client);
+    }
 
     //PUT PARA ATUALIZAR CLIENTES
 

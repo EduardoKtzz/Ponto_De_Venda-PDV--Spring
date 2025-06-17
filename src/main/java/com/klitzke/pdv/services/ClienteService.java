@@ -30,5 +30,10 @@ public class ClienteService {
         return repositorio.findByEmail(email);
     }
 
+    //Metodo para salvar um novo cliente
+    public Client Insert(Client client) {
+        return repositorio.save(client);
+    }
+
 
 }

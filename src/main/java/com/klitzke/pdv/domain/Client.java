@@ -40,3 +40,6 @@ public class Client {
     private Segmento segmento;
 
 }
+
+
+//PRECISO COLOCAR COLUNAS COMO OBRIGATORIAS
