@@ -27,13 +27,13 @@ public class Client {
     private String name;
     private String email;
     private String telefone;
+    private int CEP;
     private String estado;
     private String cidade;
     private String bairro;
     private String rua;
-    private String complemento;
     private int numeroCasa;
-    private int CEP;
+    private String complemento;
 
     //Associações e anotação para definir o tipo de ENUM
     @Enumerated(EnumType.STRING)  //EnumType.‘STRING’ é mais seguro, pois evita problemas quando a ordem do enum mudar.
