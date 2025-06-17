@@ -35,5 +35,11 @@ public class ClienteService {
         return repositorio.save(client);
     }
 
+    //Metodo para deletar usuários
+    public void deletar(Long id) {
+        if (!repositorio.existsById(id)) throw new RuntimeException("Erro, não encontramos o usuário: " + id);
+        repositorio.deleteById(id);
+    }
+
 
 }

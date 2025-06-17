@@ -10,7 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-//Aqui temos o http principal para os clientes, com os seus métodos (GET, POST, DELETE, PUT)
+//Aqui temos o http principal para os clientes, com os seus métodos (GET, POST, PUT)
 @RestController
 @RequestMapping("/clientes/")
 public class ClientController {
@@ -46,6 +46,14 @@ public class ClientController {
         return ResponseEntity.created(uri).body(client);
     }
 
+    //DELETE - Deletar usuários do nosso banco de dados
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deletarContato(@PathVariable Long id) {
+        service.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
     //PUT PARA ATUALIZAR CLIENTES
+
 
 }
