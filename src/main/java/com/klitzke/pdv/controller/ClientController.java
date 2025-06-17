@@ -5,6 +5,7 @@ import com.klitzke.pdv.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -24,5 +25,17 @@ public class ClientController {
         List<Client> clientes = service.findAll();
         return ResponseEntity.ok().body(clientes);
     }
+
+    //GET POR CPF
+    @GetMapping(value = "/document/{document}")
+    public ResponseEntity<Client> findByDocument(@PathVariable String document) {
+        return service.findByDocument(document).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    //GET POR EMAIL
+
+    //POST PARA CRIAR CLIENTES
+
+    //PUT PARA ATUALIZAR CLIENTES
 
 }

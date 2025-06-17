@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -17,6 +18,11 @@ public class ClienteService {
     //Buscar todos os clientes
     public List<Client> findAll() {
         return repositorio.findAll();
+    }
+
+    //Buscar cliente por CPF/CNPJ
+    public Optional<Client> findByDocument(String document) {
+        return repositorio.findByDocument(document);
     }
 
 
