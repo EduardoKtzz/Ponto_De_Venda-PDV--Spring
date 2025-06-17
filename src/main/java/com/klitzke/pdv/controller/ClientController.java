@@ -26,19 +26,19 @@ public class ClientController {
         return ResponseEntity.ok().body(clientes);
     }
 
-    //GET - Para puxar o clint por CPF ou CNPJ
+    //GET - Para puxar os clientes por CPF ou CNPJ
     @GetMapping(value = "/document/{document}")
     public ResponseEntity<Client> findByDocument(@PathVariable String document) {
         return service.findByDocument(document).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    //GET POR EMAIL
+    //GET - Para puxar os clientes por email
     @GetMapping(value = "/email/{email}")
     public ResponseEntity<Client> findByEmail(@PathVariable String email) {
         return service.findByEmail(email).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    //POST PARA CRIAR CLIENTES
+    //POST - Realizar criação de novos usurious
     @PostMapping
     public ResponseEntity<Client> insert(@RequestBody Client client) {
         client = service.Insert(client);
