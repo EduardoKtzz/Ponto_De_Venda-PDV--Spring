@@ -25,5 +25,10 @@ public class ClienteService {
         return repositorio.findByDocument(document);
     }
 
+    //Metodo para buscar cliente por EMAIL
+    public Optional<Client> findByEmail(String email) {
+        return repositorio.findByEmail(email);
+    }
+
 
 }
