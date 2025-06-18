@@ -21,6 +21,12 @@ public class Produtos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
     private Long id;
+
+    @Column(unique = true)  //Definir coluna como unica, não pode ter repetição
+    private int codigo;
+    private String tipo;
+
+    @Column(unique = true) //Definir coluna como unica, não pode ter repetição
     private String name;
     private BigDecimal preco;
     private int quantidadeEstoque;
