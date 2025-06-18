@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -14,7 +15,14 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepositorio repositorio;
 
+    //Buscar todos os produtos
     public List<Produtos> findAll() {
         return repositorio.findAll();
     }
+
+    //Buscar produtos por codigo
+    public Optional<Produtos> findByCodigo(int codigo) {
+        return repositorio.findByCodigo(codigo);
+    }
+
 }
