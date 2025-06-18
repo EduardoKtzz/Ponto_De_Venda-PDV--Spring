@@ -23,9 +23,9 @@ public class DataConfig {
             clienteRepositorio.save(new Client(null, "45678912300", "Carlos Lima", "carlos@email.com", "27987777777", 29122223, "RJ", "Rio de Janeiro", "Rocinha", "Miranda", 9, "casa", Segmento.PROFISSIONAL));
 
             // Produtos para ser usados como teste
-            produtoRepositorio.save(new Produtos(null, "Stick", new BigDecimal("49.90"), 100));
-            produtoRepositorio.save(new Produtos(null, "Protetor Solar", new BigDecimal("199.90"), 50));
-            produtoRepositorio.save(new Produtos(null, "Sabonete", new BigDecimal("299.00"), 20));
+            produtoRepositorio.save(new Produtos(null, 9888, "HAWA", "Stick", new BigDecimal("49.90"), 100));
+            produtoRepositorio.save(new Produtos(null, 9923, "FERT", "Protetor Solar", new BigDecimal("199.90"), 50));
+            produtoRepositorio.save(new Produtos(null, 7362, "HALB", "Sabonete", new BigDecimal("299.00"), 20));
         };
     }
 }
