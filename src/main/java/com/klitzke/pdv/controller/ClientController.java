@@ -53,7 +53,11 @@ public class ClientController {
         return ResponseEntity.noContent().build();
     }
 
-    //PUT PARA ATUALIZAR CLIENTES
-
+    //PUT - Atualizar informações dos clientes
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Client> atualizarCliente(@PathVariable Long id, @RequestBody Client client) {
+        client = service.atualizarCliente(id, client);
+        return ResponseEntity.ok().body(client);
+    }
 
 }
