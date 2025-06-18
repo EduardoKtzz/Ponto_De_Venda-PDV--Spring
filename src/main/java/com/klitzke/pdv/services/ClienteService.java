@@ -41,5 +41,24 @@ public class ClienteService {
         repositorio.deleteById(id);
     }
 
+    //Metodo para atualizar usuários
+    public Client atualizarCliente(Long id, Client client) {
+        Client entidade = repositorio.findById(id).orElseThrow(() -> new RuntimeException("Não foi encontrado o cliente com id: " + id));
+
+        entidade.setName(client.getName());
+        entidade.setEmail(client.getEmail());
+        entidade.setTelefone(client.getTelefone());
+        entidade.setCEP(client.getCEP());
+        entidade.setEstado(client.getEstado());
+        entidade.setCidade(client.getCidade());
+        entidade.setBairro(client.getBairro());
+        entidade.setRua(client.getRua());
+        entidade.setNumeroCasa(client.getNumeroCasa());
+        entidade.setComplemento(client.getComplemento());
+        entidade.setSegmento(client.getSegmento());
+
+        return repositorio.save(entidade);
+    }
+
 
 }
