@@ -45,14 +45,19 @@ public class ProductController {
         return service.findByName(nome).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    //POST
+    //POST - Criar produtos
     @PostMapping
     public ResponseEntity<Produtos> insert(@RequestBody Produtos produtos) {
         produtos = service.insert(produtos);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produtos.getId()).toUri();
         return ResponseEntity.created(uri).body(produtos);
     }
-    //PUT
 
+    //PUT -  Atualizar produtos
+    @PutMapping(value = "/atualizar/{codigo}")
+    public ResponseEntity<Produtos> atualizar(@PathVariable int codigo, @RequestBody Produtos produtos) {
+        produtos = service.atualizar(codigo, produtos);
+        return ResponseEntity.ok().body(produtos);
+    }
 
 }
