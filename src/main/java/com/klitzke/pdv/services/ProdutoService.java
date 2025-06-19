@@ -36,4 +36,9 @@ public class ProdutoService {
         return produtos;
     }
 
+    //Buscar produtos pelo nome dele
+    public Optional<Produtos> findByName(String name) {
+        return repositorio.findByName(name);
+    }
+
 }
