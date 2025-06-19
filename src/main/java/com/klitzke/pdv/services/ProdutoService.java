@@ -41,4 +41,9 @@ public class ProdutoService {
         return repositorio.findByName(name);
     }
 
+    //Criar um produto
+    public Produtos insert(Produtos produtos) {
+        return repositorio.save(produtos);
+    }
+
 }
