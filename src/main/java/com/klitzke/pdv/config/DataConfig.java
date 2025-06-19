@@ -25,7 +25,10 @@ public class DataConfig {
             // Produtos para ser usados como teste
             produtoRepositorio.save(new Produtos(null, 9888, "HAWA", "Stick", new BigDecimal("49.90"), 100));
             produtoRepositorio.save(new Produtos(null, 9923, "FERT", "Protetor Solar", new BigDecimal("199.90"), 50));
-            produtoRepositorio.save(new Produtos(null, 7362, "HALB", "Sabonete", new BigDecimal("299.00"), 20));
+            produtoRepositorio.save(new Produtos(null, 7362, "HALB", "Sabonete1", new BigDecimal("299.00"), 20));
+            produtoRepositorio.save(new Produtos(null, 7363, "HALB", "Sabonete2", new BigDecimal("299.00"), 20));
+            produtoRepositorio.save(new Produtos(null, 7364, "HALB", "Sabonete3", new BigDecimal("299.00"), 20));
+
         };
     }
 }
