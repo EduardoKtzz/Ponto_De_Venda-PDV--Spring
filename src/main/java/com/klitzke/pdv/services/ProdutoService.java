@@ -46,4 +46,16 @@ public class ProdutoService {
         return repositorio.save(produtos);
     }
 
+    //Atualizar produtos
+    public Produtos atualizar(int codigo, Produtos produtos) {
+        Produtos prod = findByCodigo(codigo).orElseThrow(() -> new RuntimeException("Material não encontrado!"));
+
+        prod.setTipo(produtos.getTipo());
+        prod.setName(produtos.getName());
+        prod.setPreco(produtos.getPreco());
+        prod.setQuantidadeEstoque(produtos.getQuantidadeEstoque());
+
+        return repositorio.save(prod);
+    }
+
 }
