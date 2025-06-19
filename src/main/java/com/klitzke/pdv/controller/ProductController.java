@@ -4,10 +4,10 @@ import com.klitzke.pdv.domain.Produtos;
 import com.klitzke.pdv.services.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 
 //Aqui temos o http principal para os produtos, com os seus métodos (GET, POST, DELETE, PUT)
@@ -44,5 +44,15 @@ public class ProductController {
     public ResponseEntity<Produtos> findByName(@PathVariable String nome) {
         return service.findByName(nome).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+
+    //POST
+    @PostMapping
+    public ResponseEntity<Produtos> insert(@RequestBody Produtos produtos) {
+        produtos = service.insert(produtos);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produtos.getId()).toUri();
+        return ResponseEntity.created(uri).body(produtos);
+    }
+    //PUT
+
 
 }
