@@ -2,6 +2,7 @@ package com.klitzke.pdv.services;
 
 import com.klitzke.pdv.domain.Client;
 import com.klitzke.pdv.repository.ClienteRepositorio;
+import com.klitzke.pdv.services.exception.RecursoNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,8 @@ public class ClienteService {
     }
 
     //Buscar cliente por CPF/CNPJ
-    public Optional<Client> findByDocument(String document) {
-        return repositorio.findByDocument(document);
+    public Client findByDocument(String document) {
+        return repositorio.findByDocument(document).orElseThrow(() -> new RecursoNaoEncontradoException("Cliente: " + document + " não encontrado"));
     }
 
     //Metodo para buscar cliente por EMAIL
