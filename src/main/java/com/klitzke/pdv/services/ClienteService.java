@@ -27,8 +27,8 @@ public class ClienteService {
     }
 
     //Metodo para buscar cliente por EMAIL
-    public Optional<Client> findByEmail(String email) {
-        return repositorio.findByEmail(email);
+    public Client findByEmail(String email) {
+        return repositorio.findByEmail(email).orElseThrow(() -> new RecursoNaoEncontradoException("Cliente com email: " + email + " não foi encontrado."));
     }
 
     //Metodo para salvar um novo cliente
