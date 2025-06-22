@@ -3,6 +3,8 @@ package com.klitzke.pdv.exception;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.cglib.core.Local;
+
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,8 +20,8 @@ public class ErrorResponse {
     private String path;
 
     //Construtor
-    public ErrorResponse(LocalDateTime timestamp, int status, String error, String message, String path) {
-        this.timestamp = timestamp;
+    public ErrorResponse(int status, String error, String message, String path) {
+        this.timestamp = LocalDateTime.now();
         this.status = status;
         this.error = error;
         this.message = message;
