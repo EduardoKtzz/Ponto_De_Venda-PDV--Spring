@@ -28,7 +28,8 @@ public class ClientController {
     //GET - Para puxar os clientes por CPF ou CNPJ
     @GetMapping(value = "/document/{document}")
     public ResponseEntity<Client> findByDocument(@PathVariable String document) {
-        return service.findByDocument(document).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Client client = service.findByDocument(document);
+        return ResponseEntity.ok(client);
     }
 
     //GET - Para puxar os clientes por email
