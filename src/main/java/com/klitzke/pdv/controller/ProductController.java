@@ -29,7 +29,8 @@ public class ProductController {
     //GET - Buscar produto especifico pelo codigo
     @GetMapping(value = "/codigo/{codigo}")
     public ResponseEntity<Produtos> findByCode(@PathVariable int codigo) {
-        return service.findByCodigo(codigo).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Produtos produtos = service.findByCodigo(codigo);
+        return ResponseEntity.ok(produtos);
     }
 
     //GET - Buscar todos os produtos do mesmo tipo
@@ -42,7 +43,8 @@ public class ProductController {
     //GET - Buscar produtos pelo nome dele
     @GetMapping(value = "/nome/{nome}")
     public ResponseEntity<Produtos> findByName(@PathVariable String nome) {
-        return service.findByName(nome).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Produtos produtos = service.findByName(nome);
+        return ResponseEntity.ok(produtos);
     }
 
     //POST - Criar produtos
