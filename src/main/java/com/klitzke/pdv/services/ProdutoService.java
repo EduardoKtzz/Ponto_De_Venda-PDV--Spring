@@ -2,6 +2,7 @@ package com.klitzke.pdv.services;
 
 import com.klitzke.pdv.domain.Produtos;
 import com.klitzke.pdv.repository.ProdutoRepositorio;
+import com.klitzke.pdv.services.exception.RecursoNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,8 @@ public class ProdutoService {
     }
 
     //Buscar produtos por codigo
-    public Optional<Produtos> findByCodigo(int codigo) {
-        return repositorio.findByCodigo(codigo);
+    public Produtos findByCodigo(int codigo) {
+        return repositorio.findByCodigo(codigo).orElseThrow(() -> new RecursoNaoEncontradoException("Produto não encontrado."));
     }
 
     //Buscar todos pelo TIPO de material
@@ -37,8 +38,8 @@ public class ProdutoService {
     }
 
     //Buscar produtos pelo nome dele
-    public Optional<Produtos> findByName(String name) {
-        return repositorio.findByName(name);
+    public Produtos findByName(String name) {
+        return repositorio.findByName(name).orElseThrow(() -> new RecursoNaoEncontradoException("Nenhum produto com esse nome encontrado."));
     }
 
     //Criar um produto
@@ -48,7 +49,7 @@ public class ProdutoService {
 
     //Atualizar produtos
     public Produtos atualizar(int codigo, Produtos produtos) {
-        Produtos prod = findByCodigo(codigo).orElseThrow(() -> new RuntimeException("Material não encontrado!"));
+        Produtos prod = findByCodigo(codigo);
 
         prod.setTipo(produtos.getTipo());
         prod.setName(produtos.getName());
