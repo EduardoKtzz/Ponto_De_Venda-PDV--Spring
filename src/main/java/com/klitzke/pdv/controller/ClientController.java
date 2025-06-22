@@ -35,7 +35,8 @@ public class ClientController {
     //GET - Para puxar os clientes por email
     @GetMapping(value = "/email/{email}")
     public ResponseEntity<Client> findByEmail(@PathVariable String email) {
-        return service.findByEmail(email).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        Client client = service.findByEmail(email);
+        return ResponseEntity.ok(client);
     }
 
     //POST - Realizar criação de novos usurious
