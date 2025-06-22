@@ -25,5 +25,6 @@ public class GlobalExceptionHandler {
         String mensagem = exception.getMessage();
         ErrorResponse erro = new ErrorResponse (HttpStatus.METHOD_NOT_ALLOWED.value(), "Parâmetro inválido", mensagem, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(erro);
+
     }
 }
