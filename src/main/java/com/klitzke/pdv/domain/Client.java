@@ -23,32 +23,51 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
+    @Column(nullable = false)
     private Long id;
 
-    @Column(unique = true)  //Definir coluna como unica, não pode ter repetição
+    @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição=
     private String document;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
+
     private String dataDeNascimento;
     private String telefone;
-    private int CEP;
+
+    @Column(nullable = false)
+    private Integer CEP;
+
+    @Column(nullable = false)
     private String estado;
+
+    @Column(nullable = false)
     private String cidade;
+
+    @Column(nullable = false)
     private String bairro;
+
+    @Column(nullable = false)
     private String rua;
-    private int numeroCasa;
+
+    private Integer numeroCasa;
     private String complemento;
-    private String senha;
+
+    @Column(nullable = false)
     private LocalDateTime dataCadastro;
+
     private String notificacoes;
 
     //Associações e anotação para definir o tipo de ENUM
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)  //EnumType.‘STRING’ é mais seguro, pois evita problemas quando a ordem do enum mudar.
     private Segmento segmento;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private tipoPessoa tipoPessoa;
 
 }
-
-//PRECISO COLOCAR COLUNAS COMO OBRIGATORIAS
