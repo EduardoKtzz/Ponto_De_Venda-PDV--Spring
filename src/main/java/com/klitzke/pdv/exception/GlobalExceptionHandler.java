@@ -2,6 +2,7 @@ package com.klitzke.pdv.exception;
 
 import com.klitzke.pdv.services.exception.RecursoNaoEncontradoException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -31,5 +32,12 @@ public class GlobalExceptionHandler {
         String mensagem = exception.getMessage();
         ErrorResponse erro = new ErrorResponse(HttpStatus.NOT_FOUND.value(), "Nenhum resultado encontrado.", mensagem, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> dadosObrigatorios (DataIntegrityViolationException exception, HttpServletRequest request) {
+        String mensagem = exception.getMessage();
+        ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Dados duplicados, verifique se esse produto já existe no sistema.", mensagem, request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
     }
 }
