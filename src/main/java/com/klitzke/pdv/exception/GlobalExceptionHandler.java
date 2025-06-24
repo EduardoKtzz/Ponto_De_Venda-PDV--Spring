@@ -38,14 +38,20 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> dadosObrigatorios (DataIntegrityViolationException exception, HttpServletRequest request) {
         String mensagem = exception.getMessage();
-        ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Dados duplicados, verifique se esse produto já existe no sistema.", mensagem, request.getRequestURI());
+        ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Violação de integridade nos dados. Verifique se há campos duplicados ou obrigatórios faltando.", mensagem, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErrorResponse> dadosInvalidos(HttpRequestMethodNotSupportedException exception, HttpServletRequest request) {
+    public ResponseEntity<ErrorResponse> dadosInvalidos(HttpMessageNotReadableException exception, HttpServletRequest request) {
         String mensagem = exception.getMessage();
         ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Dados errados.", mensagem, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(erro);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> erroGeral(Exception exception, HttpServletRequest request) {
+        ErrorResponse erro = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Erro interno inesperado.", exception.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
     }
 }
