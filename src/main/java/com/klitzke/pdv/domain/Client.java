@@ -1,8 +1,11 @@
 package com.klitzke.pdv.domain;
 
 import com.klitzke.pdv.enums.Segmento;
+import com.klitzke.pdv.enums.tipoPessoa;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 //Usando o Lombok para não repetir códigos, e definindo que essa classe vai fazer parte da tabela de clientes, e definindo o nome da tabela
 @Entity
@@ -34,10 +37,17 @@ public class Client {
     private String rua;
     private int numeroCasa;
     private String complemento;
+    private String senha;
+    private LocalDateTime dataCadastro;
+    private String notificacoes;
 
     //Associações e anotação para definir o tipo de ENUM
     @Enumerated(EnumType.STRING)  //EnumType.‘STRING’ é mais seguro, pois evita problemas quando a ordem do enum mudar.
     private Segmento segmento;
+
+    @Enumerated(EnumType.STRING)
+    private tipoPessoa tipoPessoa;
+
 
 }
 
