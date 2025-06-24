@@ -29,6 +29,7 @@ public class Client {
     private String document;
     private String name;
     private String email;
+    private String dataDeNascimento;
     private String telefone;
     private int CEP;
     private String estado;
@@ -48,8 +49,6 @@ public class Client {
     @Enumerated(EnumType.STRING)
     private tipoPessoa tipoPessoa;
 
-
 }
-
 
 //PRECISO COLOCAR COLUNAS COMO OBRIGATORIAS
