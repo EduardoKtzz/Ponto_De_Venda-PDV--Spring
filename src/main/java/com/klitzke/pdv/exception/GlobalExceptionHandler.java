@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -39,5 +40,12 @@ public class GlobalExceptionHandler {
         String mensagem = exception.getMessage();
         ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Dados duplicados, verifique se esse produto já existe no sistema.", mensagem, request.getRequestURI());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> dadosInvalidos(HttpRequestMethodNotSupportedException exception, HttpServletRequest request) {
+        String mensagem = exception.getMessage();
+        ErrorResponse erro = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), "Dados errados.", mensagem, request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(erro);
     }
 }
