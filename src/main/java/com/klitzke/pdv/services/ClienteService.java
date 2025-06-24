@@ -32,7 +32,7 @@ public class ClienteService {
     }
 
     //Metodo para salvar um novo cliente
-    public Client Insert(Client client) {
+    public Client insert(Client client) {
         return repositorio.save(client);
     }
 
