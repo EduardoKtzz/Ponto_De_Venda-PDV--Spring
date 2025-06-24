@@ -1,7 +1,10 @@
 package com.klitzke.pdv.controller;
 
 import com.klitzke.pdv.domain.Client;
+import com.klitzke.pdv.dto.ClientDTO;
+import com.klitzke.pdv.mapper.ClientMapper;
 import com.klitzke.pdv.services.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +44,11 @@ public class ClientController {
 
     //POST - Realizar criação de novos usurious
     @PostMapping
-    public ResponseEntity<Client> insert(@RequestBody Client client) {
-        client = service.Insert(client);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(client.getId()).toUri();
-        return ResponseEntity.created(uri).body(client);
+    public ResponseEntity<Client> insert(@Valid @RequestBody ClientDTO dto) {
+        Client client = ClientMapper.toEntity(dto);
+        Client novoCliente = service.insert(client);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(novoCliente.getId()).toUri();
+        return ResponseEntity.created(uri).body(novoCliente);
     }
 
     //DELETE - Deletar usuários do nosso banco de dados
