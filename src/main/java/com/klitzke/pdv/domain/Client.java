@@ -1,7 +1,7 @@
 package com.klitzke.pdv.domain;
 
 import com.klitzke.pdv.enums.Segmento;
-import com.klitzke.pdv.enums.tipoPessoa;
+import com.klitzke.pdv.enums.TipoPessoa;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,48 +26,54 @@ public class Client {
     @Column(nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição=
+    @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição e definindo como obrigatoria
     private String document;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String email;
 
     private String dataDeNascimento;
     private String telefone;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private Integer CEP;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String estado;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String cidade;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String bairro;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private String rua;
 
     private Integer numeroCasa;
     private String complemento;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     private LocalDateTime dataCadastro;
 
     private String notificacoes;
 
     //Associações e anotação para definir o tipo de ENUM
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     @Enumerated(EnumType.STRING)  //EnumType.‘STRING’ é mais seguro, pois evita problemas quando a ordem do enum mudar.
     private Segmento segmento;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // Definindo atributo como obrigatório
     @Enumerated(EnumType.STRING)
-    private tipoPessoa tipoPessoa;
+    private TipoPessoa tipoPessoa;
+
+    //Salvar a hora que o cliente foi salvo
+    @PrePersist
+    public void onCreate() {
+        this.dataCadastro = LocalDateTime.now();
+    }
 
 }
