@@ -1,7 +1,7 @@
 package com.klitzke.pdv.dto;
 
 import com.klitzke.pdv.enums.Segmento;
-import com.klitzke.pdv.enums.tipoPessoa;
+import com.klitzke.pdv.enums.TipoPessoa;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,7 +16,7 @@ public class ClientDTO {
 
     //Atributos
     @NotNull(message = "O tipo de pessoa é obrigatório.")
-    private tipoPessoa tipoPessoa;
+    private TipoPessoa tipoPessoa;
 
     @NotBlank(message = "O documento (CPF/CNPJ) é obrigatório.")
     private String document;
