@@ -2,13 +2,16 @@ package com.klitzke.pdv.dto;
 
 import com.klitzke.pdv.enums.Segmento;
 import com.klitzke.pdv.enums.tipoPessoa;
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClientDTO {
 
     //Atributos
@@ -30,7 +33,7 @@ public class ClientDTO {
     private String telefone;
 
     @NotNull(message = "O CEP do cliente é obrigatório")
-    private int CEP;
+    private Integer CEP;
 
     @NotBlank(message = "O estado do cliente é obrigatório")
     private String estado;
@@ -44,28 +47,11 @@ public class ClientDTO {
     @NotBlank(message = "A rua do cliente é obrigatório")
     private String rua;
 
-    private int numeroCasa;
+    private Integer numeroCasa;
     private String complemento;
     private String notificacoes;
 
     @NotNull(message = "O segmento do cliente é obrigatório")
     private Segmento segmento;
 
-    public ClientDTO(tipoPessoa tipoPessoa, String name, String document, String email, String dataDeNascimento, String telefone, Segmento segmento, int CEP, String rua, String bairro, String cidade, int numeroCasa, String estado, String complemento, String notificacoes) {
-        this.tipoPessoa = tipoPessoa;
-        this.name = name;
-        this.document = document;
-        this.email = email;
-        this.dataDeNascimento = dataDeNascimento;
-        this.telefone = telefone;
-        this.segmento = segmento;
-        this.CEP = CEP;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.numeroCasa = numeroCasa;
-        this.estado = estado;
-        this.complemento = complemento;
-        this.notificacoes = notificacoes;
-    }
 }
