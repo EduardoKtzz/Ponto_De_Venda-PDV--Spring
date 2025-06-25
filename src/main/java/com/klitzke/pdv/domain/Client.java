@@ -24,7 +24,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
     @Column(nullable = false)
-    private Long id;
+    private String id;
 
     @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição e definindo como obrigatoria
     private String document;
