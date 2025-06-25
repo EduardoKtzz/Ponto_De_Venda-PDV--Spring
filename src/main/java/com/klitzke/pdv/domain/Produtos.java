@@ -22,6 +22,8 @@ public class Produtos {
     @ToString.Include
     private Long id;
 
+    private String codigoDeBarras;
+
     @Column(unique = true)  //Definir coluna como unica, não pode ter repetição
     private int codigo;
     private String tipo;
