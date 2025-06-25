@@ -23,7 +23,7 @@ public class ProdutoService {
     }
 
     //Buscar produtos por codigo
-    public Produtos findByCodigo(int codigo) {
+    public Produtos findByCodigo(String codigo) {
         return repositorio.findByCodigo(codigo).orElseThrow(() -> new RecursoNaoEncontradoException("Produto não encontrado."));
     }
 
@@ -48,7 +48,7 @@ public class ProdutoService {
     }
 
     //Atualizar produtos
-    public Produtos atualizar(int codigo, Produtos produtos) {
+    public Produtos atualizar(String codigo, Produtos produtos) {
         Produtos prod = findByCodigo(codigo);
 
         prod.setTipo(produtos.getTipo());
