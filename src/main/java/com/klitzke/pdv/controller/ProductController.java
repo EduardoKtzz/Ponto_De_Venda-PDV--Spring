@@ -1,7 +1,10 @@
 package com.klitzke.pdv.controller;
 
 import com.klitzke.pdv.domain.Produtos;
+import com.klitzke.pdv.dto.ProdutoDTO;
+import com.klitzke.pdv.mapper.ProdutoMapper;
 import com.klitzke.pdv.services.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +52,8 @@ public class ProductController {
 
     //POST - Criar produtos
     @PostMapping
-    public ResponseEntity<Produtos> insert(@RequestBody Produtos produtos) {
+    public ResponseEntity<Produtos> insert(@Valid @RequestBody ProdutoDTO dto) {
+        Produtos produtos = ProdutoMapper.toEntity(dto);
         produtos = service.insert(produtos);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produtos.getId()).toUri();
         return ResponseEntity.created(uri).body(produtos);
