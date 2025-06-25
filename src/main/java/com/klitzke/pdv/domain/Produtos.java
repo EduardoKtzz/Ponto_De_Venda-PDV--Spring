@@ -24,9 +24,6 @@ public class Produtos {
     @ToString.Include
     private Long id;
 
-    @Column(nullable = false)
-    private String codigoDeBarras;
-
     @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição
     private String codigo;
 
@@ -43,5 +40,8 @@ public class Produtos {
     @Column(nullable = false)
     @Min(value = 0, message = "O estoque não pode ser negativo")
     private int quantidadeEstoque;
+
+    @Column(nullable = false)
+    private String codigoDeBarras;
 
 }
