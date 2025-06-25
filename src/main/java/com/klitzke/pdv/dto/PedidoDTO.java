@@ -12,7 +12,7 @@ public class PedidoDTO {
 
     @Data
     public static class ItemDTO {
-        private int produtoCodigo;
+        private String produtoCodigo;
         private int quantidade;
     }
 }
