@@ -31,7 +31,7 @@ public class ProductController {
 
     //GET - Buscar produto especifico pelo codigo
     @GetMapping(value = "/codigo/{codigo}")
-    public ResponseEntity<Produtos> findByCode(@PathVariable int codigo) {
+    public ResponseEntity<Produtos> findByCode(@PathVariable String codigo) {
         Produtos produtos = service.findByCodigo(codigo);
         return ResponseEntity.ok(produtos);
     }
@@ -61,7 +61,7 @@ public class ProductController {
 
     //PUT -  Atualizar produtos
     @PutMapping(value = "/atualizar/{codigo}")
-    public ResponseEntity<Produtos> atualizar(@PathVariable int codigo, @RequestBody Produtos produtos) {
+    public ResponseEntity<Produtos> atualizar(@PathVariable String codigo, @RequestBody Produtos produtos) {
         produtos = service.atualizar(codigo, produtos);
         return ResponseEntity.ok().body(produtos);
     }
