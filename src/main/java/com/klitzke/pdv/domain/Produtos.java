@@ -28,7 +28,7 @@ public class Produtos {
     private String codigoDeBarras;
 
     @Column(unique = true, nullable = false)  //Definir coluna como unica, não pode ter repetição
-    private int codigo;
+    private String codigo;
 
     @Column(nullable = false)
     private String tipo;
