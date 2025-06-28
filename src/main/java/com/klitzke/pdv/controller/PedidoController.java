@@ -18,9 +18,16 @@ public class PedidoController {
     @Autowired
     private PedidoService service;
 
+    //POST PARA CRIAR PEDIDOS
     @PostMapping
     public ResponseEntity<Pedido> criarPedido(@RequestBody PedidoDTO dto) {
         Pedido pedido = service.criarPedido(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(pedido);
     }
+
+    //PUT - Atualizar pedido
+
+    //DELETE - Excluir pedido
+
+
 }
