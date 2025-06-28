@@ -16,15 +16,19 @@ import java.time.LocalDateTime;
 @Service
 public class PedidoService {
 
+    //Adicionando dependencia
     @Autowired
     private PedidoRepositorio pedidoRepositorio;
 
+    //Adicionando dependencia
     @Autowired
     private ClienteRepositorio clienteRepositorio;
 
+    //Adicionando dependencia
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
 
+    //Metodo para criar produtos
     public Pedido criarPedido(PedidoDTO dto) {
         Client client = clienteRepositorio.findByDocument(dto.getClienteDocument()).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
@@ -51,6 +55,15 @@ public class PedidoService {
 
         pedido.setTotal(total);
         return pedidoRepositorio.save(pedido);
-
     }
+
+    //Deletar pedidos
+    public void deletarPedido(Long id) {
+        if(pedidoRepositorio.existsById(id)) throw new RuntimeException("Esse pedido não existe.");
+        pedidoRepositorio.deleteById(id);
+    }
+
+
+
+
 }
