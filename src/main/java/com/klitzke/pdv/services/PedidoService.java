@@ -8,10 +8,12 @@ import com.klitzke.pdv.dto.PedidoDTO;
 import com.klitzke.pdv.repository.ClienteRepositorio;
 import com.klitzke.pdv.repository.PedidoRepositorio;
 import com.klitzke.pdv.repository.ProdutoRepositorio;
+import com.klitzke.pdv.services.exception.RecursoNaoEncontradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class PedidoService {
@@ -27,6 +29,11 @@ public class PedidoService {
     //Adicionando dependencia
     @Autowired
     private ProdutoRepositorio produtoRepositorio;
+
+    //Meotodo para pegar todos os pedidos
+    public List<Pedido> todosPedidos() {
+        return pedidoRepositorio.findAll();
+    }
 
     //Metodo para criar produtos
     public Pedido criarPedido(PedidoDTO dto) {
@@ -59,13 +66,9 @@ public class PedidoService {
 
     //Deletar pedidos
     public void deletarPedido(Long id) {
-        if(pedidoRepositorio.existsById(id)) {
-            throw new RuntimeException("Pedido não existe.");
+        if (!pedidoRepositorio.existsById(id)) {
+            throw new RecursoNaoEncontradoException("Pedido não existe.");
         }
         pedidoRepositorio.deleteById(id);
     }
-
-
-
-
 }
