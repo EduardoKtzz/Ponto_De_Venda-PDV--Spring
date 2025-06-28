@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/pedidos")
+@RequestMapping("/pedidos/")
 public class PedidoController {
 
     @Autowired
@@ -29,7 +29,6 @@ public class PedidoController {
     public ResponseEntity<Void> deletarPedido(@PathVariable Long id) {
         service.deletarPedido(id);
         return ResponseEntity.noContent().build();
-
     }
 
 }
