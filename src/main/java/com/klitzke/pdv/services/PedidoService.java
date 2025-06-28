@@ -59,7 +59,9 @@ public class PedidoService {
 
     //Deletar pedidos
     public void deletarPedido(Long id) {
-        if(pedidoRepositorio.existsById(id)) throw new RuntimeException("Esse pedido não existe.");
+        if(pedidoRepositorio.existsById(id)) {
+            throw new RuntimeException("Pedido não existe.");
+        }
         pedidoRepositorio.deleteById(id);
     }
 
