@@ -8,12 +8,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pedidos/")
 public class PedidoController {
 
     @Autowired
     private PedidoService service;
+
+    //GET - Pegar todos os pedidos
+    @GetMapping
+    public ResponseEntity<List<Pedido>> todosPedidos() {
+        List<Pedido> pedidos = service.todosPedidos();
+        return ResponseEntity.ok().body(pedidos);
+    }
 
     //POST PARA CRIAR PEDIDOS
     @PostMapping
@@ -25,7 +34,7 @@ public class PedidoController {
     //PUT - Atualizar pedido
 
     //DELETE - Excluir pedido
-    @DeleteMapping(value = "/excluir/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deletarPedido(@PathVariable Long id) {
         service.deletarPedido(id);
         return ResponseEntity.noContent().build();
