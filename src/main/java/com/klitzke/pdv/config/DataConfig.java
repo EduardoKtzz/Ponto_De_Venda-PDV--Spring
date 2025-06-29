@@ -21,6 +21,9 @@ public class DataConfig {
             clienteRepositorio.save(new Client(null, "12345678900", "João da Silva", "joao@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.CLIENTE_FINAL, TipoPessoa.Pessoa_Fisica_PF));
             clienteRepositorio.save(new Client(null, "12345678922232322", "Pedro Silva", "joo@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Não deseja receber notificações", Segmento.PROFISSIONAL, TipoPessoa.Pessoa_Juridica_PJ));
             clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
+            clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
+
+
 
             // Produtos para ser usados como teste
             produtoRepositorio.save(new Produtos(null, "9888", "HAWA", "Stick", new BigDecimal("49.90"), 100, "2834728284828"));
