@@ -32,6 +32,8 @@ public class DataConfig {
             produtoRepositorio.save(new Produtos(null, "9923", "FERT", "Protetor Solar", new BigDecimal("199.90"), 50, "2834728284828"));
             produtoRepositorio.save(new Produtos(null, "7362", "HALB", "Sabonete1", new BigDecimal("299.00"), 20, "2834728284828"));
             produtoRepositorio.save(new Produtos(null, "7362", "HALB", "Sabonete1", new BigDecimal("299.00"), 20, "2834728284828"));
+            produtoRepositorio.save(new Produtos(null, "7362", "HALB", "Sabonete1", new BigDecimal("299.00"), 20, "2834728284828"));
+            produtoRepositorio.save(new Produtos(null, "7362", "HALB", "Sabonete1", new BigDecimal("299.00"), 20, "2834728284828"));
 
 
         };
