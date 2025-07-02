@@ -24,6 +24,7 @@ public class DataConfig {
             clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
             clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
             clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
+            clienteRepositorio.save(new Client(null, "12345678933", "Bernado da Silva", "joa@email.com", "12/12/2004", "27999999999", 29160123, "ES", "Serra", "Carapina Grande", "Antonio Rangel", 98, "portão azul", null, "Deseja receber notificações", Segmento.COLABORADOR, TipoPessoa.Pessoa_Fisica_PF));
 
 
 
