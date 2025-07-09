@@ -33,7 +33,7 @@ public class PedidoController {
 
     //PUT - Atualizar pedido
 
-    //DELETE - Excluir pedido
+    //DELETE - Excluir pedidoo
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deletarPedido(@PathVariable Long id) {
         service.deletarPedido(id);
