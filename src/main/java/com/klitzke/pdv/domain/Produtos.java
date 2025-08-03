@@ -39,7 +39,7 @@ public class Produtos {
 
     @Column(nullable = false)
     @Min(value = 0, message = "O estoque não pode ser negativo")
-    private int quantidadeEstoque;
+    private Integer quantidadeEstoque;
 
     @Column(nullable = false)
     private String codigoDeBarras;

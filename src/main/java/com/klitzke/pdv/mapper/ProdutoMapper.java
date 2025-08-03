@@ -12,7 +12,8 @@ public class ProdutoMapper {
         produto.setTipo(dto.getTipoMaterial());
         produto.setName(dto.getName());
         produto.setPreco(dto.getPreco());
-        produto.setQuantidadeEstoque(0); // valor inicial padrão
+        produto.setQuantidadeEstoque(dto.getQuantidadeEstoque()); // valor inicial padrão
+        produto.setCodigoDeBarras(dto.getCodigoDeBarras());
         return produto;
     }
 
@@ -23,6 +24,7 @@ public class ProdutoMapper {
         dto.setTipoMaterial(produto.getTipo());
         dto.setName(produto.getName());
         dto.setPreco(produto.getPreco());
+        dto.setQuantidadeEstoque(produto.getQuantidadeEstoque());
         return dto;
     }
 }

@@ -1,6 +1,7 @@
 package com.klitzke.pdv.dto;
 
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,14 @@ public class ProdutoDTO {
     private String name;
 
     //Campo obrigatorio e com valor minimo definido
-    @DecimalMin(value = "0,01", message = "O valor precisa ser maior que zero")
+    @DecimalMin(value = "0.01", message = "O valor precisa ser maior que zero")
     @NotNull(message = "O preco é obrigatório.")
     private BigDecimal preco;
+
+    @NotNull
+    private Integer quantidadeEstoque;
+
+    @NotBlank(message = "O código de barras é obrigatório")
+    private String codigoDeBarras;
 
 }
